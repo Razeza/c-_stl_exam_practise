@@ -38,12 +38,12 @@ public:
 
     unique_ptr            (unique_ptr&& init) noexcept:
         pointer (init.pointer)
-    { init = nullptr; }
+    { init.pointer = nullptr; }
 
     unique_ptr& operator= (unique_ptr&& init) noexcept
     {
         pointer = init.pointer;
-        init = nullptr;
+        init.pointer = nullptr;
 
         return *this;
     }
