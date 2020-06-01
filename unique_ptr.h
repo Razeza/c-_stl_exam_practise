@@ -42,7 +42,10 @@ public:
 
     unique_ptr& operator= (unique_ptr&& init) noexcept
     {
-        pointer = init.pointer;
+        deleter (pointer);
+
+        pointer      = init.pointer;
+        deleter      = std::move (init.deleter);
         init.pointer = nullptr;
 
         return *this;
